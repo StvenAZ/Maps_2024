@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Launcher">
+
+    <!-- Grouping ImageView and TextView in a ConstraintLayout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/groupLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="133dp"
+            android:layout_height="89dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/escudo" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="231dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="8dp"
+            android:text="Mapa Lugares Turisticos de Quevedo "
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/imageView"
+            app:layout_constraintStart_toEndOf="@id/imageView"
+            app:layout_constraintTop_toTopOf="@id/imageView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Adding EditTexts for Latitude, Longitude, and Radius -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/inputFieldsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/groupLayout"
+        android:layout_marginTop="16dp">
+
+        <!-- Label for Latitude -->
+        <TextView
+            android:id="@+id/labelLatitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latitud"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/txtLatitud"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="I"
+            android:inputType="numberDecimal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelLatitude"
+            android:layout_marginTop="4dp" />
+
+        <!-- Label for Longitude -->
+        <TextView
+            android:id="@+id/labelLongitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Longitud"
+            app:layout_constraintStart_toEndOf="@id/txtLatitud"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="16dp" />
+
+        <EditText
+            android:id="@+id/txtLongitud"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint=""
+            android:inputType="numberDecimal"
+            app:layout_constraintStart_toEndOf="@id/txtLatitud"
+            app:layout_constraintTop_toBottomOf="@id/labelLongitude"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp" />
+
+        <!-- Label for Radius -->
+        <TextView
+            android:id="@+id/labelRadius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Radio"
+            app:layout_constraintStart_toEndOf="@id/txtLongitud"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="16dp" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderRadio"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:stepSize="1"
+            android:value="1"
+            android:valueFrom="0"
+            android:valueTo="5"
+            app:layout_constraintStart_toEndOf="@id/txtLongitud"
+            app:layout_constraintTop_toBottomOf="@id/labelRadius"
+            android:layout_marginStart="16dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputFieldsLayout"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
